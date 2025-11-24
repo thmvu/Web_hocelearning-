@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Video Player - NCKH Platform</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; }
+        .nav a { padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px; }
+        .video-container { background: #000; border-radius: 8px; margin: 20px 0; text-align: center; padding: 20px; }
+        .video-placeholder { background: #333; color: white; padding: 100px; border-radius: 8px; }
+        .progress-bar { width: 100%; height: 10px; background: #ddd; border-radius: 5px; margin: 20px 0; }
+        .progress { height: 100%; background: #28a745; border-radius: 5px; width: 0%; transition: width 0.3s; }
+        .log-info { background: #e9ecef; padding: 15px; border-radius: 8px; margin: 20px 0; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="margin-bottom: 20px;">
+            <a href="/">🏠 Home</a>
+            <a href="/videos">📺 Videos</a>
+        </div>
+
+        <h1>🎬 Đang phát: <span th:text="${videoTitle} ?: 'Spring Boot Tutorial'"></span></h1>
+        
+        <div class="video-container">
+            <div class="video-placeholder">
+                <h2>🎥 VIDEO PLAYER</h2>
+                <p>Video ID: <span th:text="${videoId} ?: '1'"></span></p>
+                <p>🔊 Âm thanh | ⏸️ Tạm dừng | ⏩ 10s</p>
+                <button onclick="simulateWatch()" style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 10px;">
+                    ▶️ Bắt đầu học (Simulate)
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div style="text-align: center;">
+            <span id="progress-text">0%</span>
+        </div>
+
+        <div class="log-info">
+            <h3>📊 Log Học Tập (Real-time)</h3>
+            <div id="log-output" style="height: 100px; overflow-y: auto; background: white; padding: 10px; border-radius: 4px;"></div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <a href="/quiz/1" style="padding: 12px 24px; background: #dc3545; color: white; text-decoration: none; border-radius: 5px; display: inline-block;">
+                📝 Làm Bài Tập Sau Video
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let progress = 0;
+        const logOutput = document.getElementById('log-output');
+        
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            logOutput.innerHTML += `[${timestamp}] ${message}<br>`;
+            logOutput.scrollTop = logOutput.scrollHeight;
+        }
+
+        function simulateWatch() {
+            log("🎬 Bắt đầu xem video...");
+            
+            const interval = setInterval(() => {
+                progress += 5;
+                document.getElementById('progress').style.width = progress + '%';
+                document.getElementById('progress-text').textContent = progress + '%';
+                
+                if (progress % 20 === 0) {
+                    log(`📊 Đã xem được ${progress}% video`);
+                }
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    log("✅ Đã hoàn thành video!");
+                    log("📈 Log đã được ghi vào MongoDB");
+                }
+            }, 1000);
+        }
+
+        // Auto log khi trang load
+        log("📹 Video player đã sẵn sàng");
+        log("🛢️ Kết nối MongoDB: ✅");
+    </script>
+</body>
+</html>

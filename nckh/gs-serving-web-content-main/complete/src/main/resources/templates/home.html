@@ -1,11 +1,66 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>NCKH Learning Platform</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; margin-bottom: 40px; }
+        .nav { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+        .nav a { padding: 12px 24px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; transition: background 0.3s; }
+        .nav a:hover { background: #0056b3; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .stat-card { background: #e9ecef; padding: 20px; border-radius: 8px; text-align: center; }
+    </style>
 </head>
 <body>
-    <h1>🚀 NCKH Learning Platform</h1>
-    <p>Research Project for Student Learning Analytics</p>
-    <a href="/greeting">Test Greeting</a>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 NCKH Learning Platform</h1>
+            <p>Hệ thống học tập và nghiên cứu khoa học</p>
+        </div>
+
+        <div class="nav">
+            <a href="/videos">📺 Video Bài Giảng</a>
+            <a href="/quizzes">📝 Bài Tập & Quiz</a>
+            <a href="/students">👥 Quản lý Sinh Viên</a>
+            <a href="/dashboard">📊 Dashboard Thống Kê</a>
+            <a href="/api/students" target="_blank">🔗 API Students</a>
+            <a href="/api/mongo-test" target="_blank">🛢️ Test MongoDB</a>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>📚 Môn Học</h3>
+                <p>5 courses</p>
+            </div>
+            <div class="stat-card">
+                <h3>🎥 Video</h3>
+                <p>20+ videos</p>
+            </div>
+            <div class="stat-card">
+                <h3>👥 Sinh Viên</h3>
+                <p>100+ students</p>
+            </div>
+            <div class="stat-card">
+                <h3>📊 Logs</h3>
+                <p>Real-time tracking</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <h2>🚀 Giới Thiệu Dự Án NCKH</h2>
+            <p>Hệ thống theo dõi hành vi học tập và dự đoán kết quả học tập của sinh viên thông qua AI.</p>
+            
+            <h3>📈 Tính Năng Chính:</h3>
+            <ul>
+                <li>Theo dõi thời gian xem video</li>
+                <li>Phân tích kết quả làm bài tập</li>
+                <li>Dự đoán nguy cơ học lại</li>
+                <li>Dashboard thống kê học tập</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

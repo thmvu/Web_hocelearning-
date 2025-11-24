@@ -1,12 +1,13 @@
 package com.example.servingwebcontent.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+// TẠM THỜI COMMENT MONGODB IMPORTS
+// import org.springframework.data.annotation.Id;
+// import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
-@Document(collection = "students")
+// @Document(collection = "students")
 public class Student {
-    @Id
+    // @Id
     private String id;
     
     private String studentId;        // Mã sinh viên (unique)
@@ -18,7 +19,7 @@ public class Student {
     private LocalDateTime updatedAt;
 
     // Constructors
-    public Student() {
+    public Student(){
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }

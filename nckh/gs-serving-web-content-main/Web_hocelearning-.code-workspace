@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "complete"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic"
+	}
+}

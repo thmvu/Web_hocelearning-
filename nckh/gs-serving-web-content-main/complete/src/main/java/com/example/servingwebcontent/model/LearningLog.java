@@ -1,14 +1,15 @@
 package com.example.servingwebcontent.model;
 
-// TẠM THỜI COMMENT MONGODB IMPORTS
-// import org.springframework.data.annotation.Id;
-// import org.springframework.data.mongodb.core.mapping.Document;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-//@Document(collection = "learning_logs")
+
+@Document(collection = "learning_logs")
 public class LearningLog {
-    // @Id
+    @Id
     private String id;
     private String studentId;
     private String action;

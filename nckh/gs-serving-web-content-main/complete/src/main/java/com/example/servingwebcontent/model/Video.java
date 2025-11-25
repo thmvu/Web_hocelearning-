@@ -1,11 +1,11 @@
 package com.example.servingwebcontent.model;
 
-// import org.springframework.data.annotation.Id;
-// import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-    // @Document(collection = "videos")
+    @Document(collection = "videos")
 public class Video {
-    //@Id
+    @Id
     private String id;
 
     private String videoId;          // Mã video (unique)

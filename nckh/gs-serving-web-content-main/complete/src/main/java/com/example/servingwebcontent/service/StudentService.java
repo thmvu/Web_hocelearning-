@@ -26,20 +26,21 @@ public class StudentService {
     }
 
     public Student createStudent(Student student) {
+        if (studentRepository.existsByStudentId(student.getStudentId())) {
+            throw new RuntimeException("Student ID already exists");
+        }
         return studentRepository.save(student);
     }
 
     public Student updateStudent(String id, Student studentDetails) {
-        Optional<Student> student = studentRepository.findById(id);
-        if (student.isPresent()) {
-            Student existingStudent = student.get();
-            existingStudent.setName(studentDetails.getName());
-            existingStudent.setEmail(studentDetails.getEmail());
-            existingStudent.setClassName(studentDetails.getClassName());
-            existingStudent.setAge(studentDetails.getAge());
-            return studentRepository.save(existingStudent);
-        }
-        return null;
+        return studentRepository.findById(id).map(student -> {
+            student.setStudentId(studentDetails.getStudentId());
+            student.setName(studentDetails.getName());
+            student.setEmail(studentDetails.getEmail());
+            student.setClassName(studentDetails.getClassName());
+            student.setAge(studentDetails.getAge());
+            return studentRepository.save(student);
+        }).orElse(null);
     }
 
     public void deleteStudent(String id) {
